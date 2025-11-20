@@ -138,7 +138,7 @@
   inset-block-end: 10px; /* Отступ снизу */
   inset-inline-start: 10px; /* Отступ слева */
   border-inline-start: 1px solid var(--additional-elements, #ff0070); /* Левая граница */
-  border-block-end: 1px solid var(--additional-elements, #ff0070); /
+  border-block-end: 1px solid var(--additional-elements, #ff0070); 
 }
 
 .heading {
