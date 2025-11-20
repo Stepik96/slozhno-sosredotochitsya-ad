@@ -1,5 +1,368 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
 .page {
-  /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
+  /* контейнер всей страницы */
+  display: flex;
+  flex-direction: column;
+  font-family: 'IBM Plex Mono', sans-serif;
+  font-size: 18px;
+  color: var(--text-color, #f1b2ce); 
+  line-height: 130%; 
+  background-color: var(--background-color, #000028);
+  background-position: center; 
+  background-attachment: fixed; /* Фон не прокручивается вместе с контентом */
+  background-size: cover; 
+  background-repeat: no-repeat; /* Фон не повторяется */
+  gap: 40px; /* Промежуток между header, main, footer*/
+}
+
+.main {
+  /* Основной контейнер контента страницы */
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px; /* Горизонтальный отступ для мобильных устройств */
+  gap: 50px; /* Вертикальный отступ между секциями */
+}
+
+/* Стили для шапки */
+
+.header {
+  /* Шапка: сетка с 3 строками и 2 колонками */
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr min-content 1fr; /* Первая и последняя строки — флекс, средняя — по содержимому */
+  grid-template-columns: repeat(2, 1fr); /* Две равные колонки */
+  grid-template-areas:
+    'nav nav' /* Панель тем в правой колонке */
+    'logo logo' /* Заголовок REC в центре */
+    'paragraph paragraph'; /* Основной текст внизу */
+}
+
+.header .accent-heading {
+  /* Акцентный заголовок внизу шапки — текст "no focus" */
+  grid-area: paragraph; /* Расположение в сетке */
+  font-weight: bold; 
+  align-self: center;
+}
+
+.header .additional-heading {
+  /* Заголовок "REC" в шапке */
+  text-shadow: 4px 4px 0 #ff0070; 
+  grid-area: logo; /* Расположение в сетке */
+  align-self: center; 
+}
+
+.header__theme-menu {
+  /* Контейнер меню выбора темы */
+  grid-area: nav; /* Расположение в сетке */
+  align-self: center; 
+  justify-self: end; 
+  color: var(--additional-elements); /* Цвет элементов меню */
+}
+
+.header__theme-menu-list {
+  /* Список кнопок выбора темы */
+  display: flex;  
+  flex-direction: column; /* Кнопки идут вертикально */
+  gap: 10px; /* Отступ между кнопками */
+}
+
+
+/* стили для кнопок */
+
+.header__theme-menu-button {
+  /* Стиль каждой кнопки выбора темы */
+  block-size: 26px; /* Высота кнопки */
+  inline-size: 70px; /* Ширина кнопки */
+  padding: 0 13px;
+  background-color: transparent; 
+  border: none; 
+  font-size: 18px;
+  line-height: 100%;
+  text-transform: lowercase; 
+  cursor: pointer;
+}
+
+.header__theme-menu-button:hover {
+  /* Эффект при наведении */
+  outline: 1px solid var(--header-menu-color, rgba(255 0 112 0.4)); 
+}
+
+.header__theme-menu-button:focus {
+  /* Убираем стандартную обводку при фокусе */
+  outline: none;
+}
+
+.header__theme-menu-button:focus-visible {
+  /* Визуальный индикатор фокуса для клавиатурного навигации */
+  border-block-end: 1px solid var(--additional-elements, #ff0070); /* Нижняя граница при фокусе */
+  outline: none; /* Убираем стандартную обводку */
+}
+
+.header__theme-menu-button_active {
+  /* Стиль активной кнопки (Авто) */
+  border: 1px solid var(--additional-elements, #ff0070); 
+  cursor: default;
+  pointer-events: none; /* Отключаем кликабельность */
+}
+
+/* Дополнительные визуальные элементы */
+
+.additional-zone {
+  /* Общие стили для зон с декоративными углами (header, footer) */
+  position: relative; /* Для абсолютного позиционирования ::before/::after */
+  min-block-size: 100%; /* Минимальная высота — 100% высоты контейнера */
+  padding: 10px; /* Внутренний отступ */
+}
+
+.additional-zone::before,
+.additional-zone::after {
+  /* Декоративные уголочки */
+  content: ''; /* Обязательно для псевдоэлементов */
+  position: absolute; 
+  display: inline-block; 
+  block-size: 25px; 
+  inline-size: 25px; 
+}
+
+.additional-zone::before {
+  /* Верхний правый угол */
+  inset-block-start: 10px; /* Отступ сверху */
+  inset-inline-end: 10px; /* Отступ справа */
+  border-block-start: 1px solid var(--additional-elements, #ff0070); /* Верхняя граница */
+  border-inline-end: 1px solid var(--additional-elements, #ff0070); 
+}
+
+.additional-zone::after {
+  /* Нижний левый угол */
+  inset-block-end: 10px; /* Отступ снизу */
+  inset-inline-start: 10px; /* Отступ слева */
+  border-inline-start: 1px solid var(--additional-elements, #ff0070); /* Левая граница */
+  border-block-end: 1px solid var(--additional-elements, #ff0070); /
+}
+
+.heading {
+  /* Общий стиль для всех заголовков */
+  color: var(--heading-color, #ff0070); /* Цвет заголовков */
+  font-size: inherit; /* Наследует размер шрифта от родителя */
+}
+
+.decorated-heading {
+  /* Устаревший селектор (в HTML не используется, но оставлен для совместимости?) */
+  color: #db00ff;
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem); /* Адаптивный размер с границами */
+  line-height: 82.5%; /* Уменьшенный межстрочный интервал для крупного текста */
+}
+
+.accent-heading {
+  /* Акцентный заголовок с фоном */
+  color: var(--accent-heading-color, #000028); /* Цвет текста */
+  font-size: inherit; /* Наследует размер */
+  background-color: var(--accent-color, #ff0070); /* Фоновый цвет — ярко-розовый */
+}
+
+.header__decorated-element {
+  /* Элемент "REC" в правом верхнем углу */
+  position: absolute; /* Позиционирование относительно .header */
+  display: flex;
+  align-items: center; /* Вертикальное центрирование */
+  inset-block-start: 10px; /* Отступ сверху */
+  inset-inline-end: 10px; /* Отступ справа */
+  color: var(--additional-elements, #ff0070); /* Цвет текста */
+}
+
+.header__decorated-element::after {
+  /* Маленький круг-декор под "REC" */
+  content: ''; /* Обязательно */
+  display: inline-block;
+  margin: 9px; /* Отступ от текста */
+  background-color: var(--additional-elements, #ff0070); /* Цвет фона */
+  border-radius: 50%; /* Круг */
+  box-shadow: 0 0 4px 3px var(--additional-elements, #ff0070); /* Свечение */
+  inline-size: 9px; /* Диаметр */
+  block-size: 9px;
+}
+
+/* стили таблицы */
+
+.table {
+  /* Общий контейнер для таблиц (секций с карточками) */
+  display: grid;
+  gap: 20px; /* Отступ между дочерними элементами */
+}
+
+.article {
+  /* Контейнер карточек внутри секции */
+  display: grid;
+  gap: 20px; /* Отступ между карточками */
+}
+
+.card {
+  /* Отдельная карточка с заголовком и текстом */
+  display: flex;
+  flex-direction: column; /* Заголовок над текстом */
+  gap: 10px; /* Отступ между h3 и p */
+}
+
+.humble-heading {
+  /* Стиль для более скромных заголовков (h4 в разделе советов) */
+  font-weight: normal; /* Нормальный вес, не жирный */
+}
+
+.card-link {
+  /* Стиль ссылок внутри карточек */
+  text-decoration: none; /* Убираем подчёркивание */
+  text-shadow: 2px 2px 0 var(--accent-color, #ff0070); /* Тень для выделения */
+}
+
+.card-link:hover {
+  /* Эффект при наведении на ссылку */
+  border-block-end: 1px solid currentColor; /* Нижняя граница — цвет текста */
+}
+
+.card-link:focus {
+  /* Убираем стандартную обводку при фокусе */
+  outline: none;
+}
+
+.card-link:focus-visible {
+  /* Визуальный индикатор фокуса для клавиатуры */
+  outline: 1px solid currentColor; /* Обводка — цвет текста */
+  appearance: none; /* Убираем стили по умолчанию для кнопок */
+}
+
+/* стили картинок */
+
+.image-gallery {
+  /* Контейнер галереи */
+  display: grid;
+  gap: 10px; /* Отступы между изображениями */
+}
+
+.gallery-container {
+  /* Контейнер для сетки изображений */
+  display: grid;
+  gap: 10px; /* Отступы между изображениями */
+}
+
+.gallery-img {
+  /* Стиль изображений в галерее */
+  display: block; 
+  inline-size: 100%; 
+  block-size: 100%; 
+  object-fit: cover; /* Изображение масштабируется, чтобы заполнить контейнер */
+  object-position: center; /* Центрирование изображения */
+}
+
+/* Cтили для подвала */
+
+.footer {
+  /* Подвал: центрированный контейнер */
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+}
+
+.footer .decorated-heading {
+  /* Тень для заголовка в подвале */
+  text-shadow: 2px 2px 0 #ff0070;
+}
+
+/* адаптация под различные устройства */
+
+@media (width >=768px) {
+
+  .page {
+    gap: 60px; /* Увеличиваем отступы */
+  }
+
+  .main {
+    padding: 0 20px; /* Увеличиваем горизонтальный отступ */
+    gap: 80px; /* Увеличиваем вертикальные отступы */
+  }
+
+  .header {
+    grid-template-areas:
+      'nav nav' /* Панель тем */
+      'logo logo' /* Заголовок REC */
+      '. paragraph'; /* Пустая колонка слева, текст справа */
+  }
+
+  .header .decorated-heading {
+    margin-inline-start: -20px; /* Сдвигаем "REC" влево для выравнивания */
+  }
+
+  /*REC*/
+  .header__decorated-element {
+    inset-inline-end: 20px; 
+    inset-block-start: 20px; /* Отступ сверху */
+  }
+
+  .column-table {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .row-table {
+    grid-template-columns: 1fr 1fr 1fr; 
+  }
+
+  .row-table .article {
+    grid-row: 2; /* Размещаем карточки во второй строке */
+    grid-column: span 3; /* Занимают все три колонки */
+  }
+
+  .image-gallery {
+    gap: 20px; /* Увеличиваем отступы в галерее */
+  }
+
+  .gallery-container {
+    grid-template-columns: repeat(3, 1fr); /* Три колонки */
+    gap: 20px; /* Отступы */
+  }
+
+  .vertical-image {
+    grid-row: span 2; /* Занимают две строки */
+  }
+
+  .horizontal-image {
+    grid-column: span 2; /* Занимают две колонки */
+  }
+
+  .decorated-zone {
+    padding: 20px; /* Увеличиваем отступы */
+  }
+
+  .decorated-zone::before {
+    inset-block-start: 20px; /* Отступ сверху */
+    inset-inline-end: 20px; 
+  }
+
+  .decorated-zone::after {
+    inset-block-end: 20px; /* Отступ снизу */
+    inset-inline-start: 20px; /* Отступ слева */
+  }
+}
+
+@media (width >=1024px) {
+
+  .header__theme-menu {
+    align-self: start; /* Прижимаем меню к верху */
+    justify-self: center; 
+  }
+
+  .header__theme-menu-list {
+    flex-direction: row; /* Кнопки становятся горизонтальными */
+  }
+
+  .row-table .article {
+    grid-template-columns: 1fr 1fr 1fr; /* Карточки в три колонки */
+  }
+
+  .column-table {
+    gap: 10px; /* Уменьшаем отступы между карточками */
+  }
+
+  .decorated-heading {
+    font-size: clamp(7.5rem, 0.5262rem + 14.5098vw, 9.8125rem); /* Ещё более масштабируемый размер */
+  }
 }
