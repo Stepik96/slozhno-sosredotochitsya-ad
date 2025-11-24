@@ -16,7 +16,7 @@
   --accent-heading-color: #000028;     /* цвет заголовков */
   --accent-color: #ff0070;            /* цвет для кнопок*/
   --heading-color: #ff0070;          /* цвет основных заголовков */
-  --additional-elements: #353430;      /* цвет линий, иконок, границ */
+  --additional-elements: #ff0070;      /* цвет линий, иконок, границ */
 }
 
 @media (width >= 768px) {
