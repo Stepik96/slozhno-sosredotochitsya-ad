@@ -288,9 +288,6 @@
       '. paragraph'; /* Пустая колонка слева, текст справа */
   }
 
-  .header .decorated-heading {
-    margin-inline-start: -20px; /* Сдвигаем "REC" влево для выравнивания */
-  }
 
   /*REC*/
   .header__decorated-element {
