@@ -6,12 +6,12 @@
   flex-direction: column;
   font-family: 'IBM Plex Mono', sans-serif;
   font-size: 18px;
-  color: var(--text-color, #f1b2ce); 
-  line-height: 130%; 
+  color: var(--text-color, #f1b2ce);
+  line-height: 130%;
   background-color: var(--background-color, #000028);
-  background-position: center; 
+  background-position: center;
   background-attachment: fixed; /* Фон не прокручивается вместе с контентом */
-  background-size: cover; 
+  background-size: cover;
   background-repeat: no-repeat; /* Фон не повторяется */
   gap: 40px; /* Промежуток между header, main, footer*/
 }
@@ -41,28 +41,28 @@
 .header .accent-heading {
   /* Акцентный заголовок внизу шапки — текст "no focus" */
   grid-area: paragraph; /* Расположение в сетке */
-  font-weight: bold; 
+  font-weight: bold;
   align-self: center;
 }
 
 .header .additional-heading {
   /* Заголовок "REC" в шапке */
-  text-shadow: 4px 4px 0 #ff0070; 
+  text-shadow: 4px 4px 0 #ff0070;
   grid-area: logo; /* Расположение в сетке */
-  align-self: center; 
+  align-self: center;
 }
 
 .header__theme-menu {
   /* Контейнер меню выбора темы */
   grid-area: nav; /* Расположение в сетке */
-  align-self: center; 
-  justify-self: end; 
+  align-self: center;
+  justify-self: end;
   color: var(--additional-elements); /* Цвет элементов меню */
 }
 
 .header__theme-menu-list {
   /* Список кнопок выбора темы */
-  display: flex;  
+  display: flex;
   flex-direction: column; /* Кнопки идут вертикально */
   gap: 10px; /* Отступ между кнопками */
 }
@@ -75,7 +75,7 @@
   block-size: 26px; /* Высота кнопки */
   inline-size: 70px; /* Ширина кнопки */
   padding: 0 13px;
-  background-color: transparent; 
+  background-color: transparent;
   border: none; 
   font-size: 18px;
   line-height: 100%;
@@ -85,7 +85,7 @@
 
 .header__theme-menu-button:hover {
   /* Эффект при наведении */
-  outline: 1px solid var(--header-menu-color, rgba(255 0 112 0.4)); 
+  outline: 1px solid var(--header-menu-color, rgba(255 0 112 0.4));
 }
 
 .header__theme-menu-button:focus {
@@ -119,10 +119,10 @@
 .additional-zone::after {
   /* Декоративные уголочки */
   content: ''; /* Обязательно для псевдоэлементов */
-  position: absolute; 
-  display: inline-block; 
-  block-size: 25px; 
-  inline-size: 25px; 
+  position: absolute;
+  display: inline-block;
+  block-size: 25px;
+  inline-size: 25px;
 }
 
 .additional-zone::before {
@@ -130,7 +130,7 @@
   inset-block-start: 10px; /* Отступ сверху */
   inset-inline-end: 10px; /* Отступ справа */
   border-block-start: 1px solid var(--additional-elements, #ff0070); /* Верхняя граница */
-  border-inline-end: 1px solid var(--additional-elements, #ff0070); 
+  border-inline-end: 1px solid var(--additional-elements, #ff0070);
 }
 
 .additional-zone::after {
@@ -138,7 +138,7 @@
   inset-block-end: 10px; /* Отступ снизу */
   inset-inline-start: 10px; /* Отступ слева */
   border-inline-start: 1px solid var(--additional-elements, #ff0070); /* Левая граница */
-  border-block-end: 1px solid var(--additional-elements, #ff0070); 
+  border-block-end: 1px solid var(--additional-elements, #ff0070);
 }
 
 .heading {
@@ -303,7 +303,7 @@
   }
 
   .row-table {
-    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-columns: 1fr 1fr 1fr;
   }
 
   .row-table .article {
@@ -334,7 +334,7 @@
 
   .decorated-zone::before {
     inset-block-start: 20px; /* Отступ сверху */
-    inset-inline-end: 20px; 
+    inset-inline-end: 20px;
   }
 
   .decorated-zone::after {
@@ -347,7 +347,7 @@
 
   .header__theme-menu {
     align-self: start; /* Прижимаем меню к верху */
-    justify-self: center; 
+    justify-self: center;
   }
 
   .header__theme-menu-list {
