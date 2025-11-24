@@ -76,10 +76,10 @@
   inline-size: 70px; /* Ширина кнопки */
   padding: 0 13px;
   background-color: transparent;
-  border: none; 
+  border: none;
   font-size: 18px;
   line-height: 100%;
-  text-transform: lowercase; 
+  text-transform: lowercase;
   cursor: pointer;
 }
 
@@ -101,7 +101,7 @@
 
 .header__theme-menu-button_active {
   /* Стиль активной кнопки (Авто) */
-  border: 1px solid var(--additional-elements, #ff0070); 
+  border: 1px solid var(--additional-elements, #ff0070);
   cursor: default;
   pointer-events: none; /* Отключаем кликабельность */
 }
@@ -247,9 +247,9 @@
 
 .gallery-img {
   /* Стиль изображений в галерее */
-  display: block; 
-  inline-size: 100%; 
-  block-size: 100%; 
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
   object-fit: cover; /* Изображение масштабируется, чтобы заполнить контейнер */
   object-position: center; /* Центрирование изображения */
 }
@@ -259,7 +259,7 @@
 .footer {
   /* Подвал: центрированный контейнер */
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
 }
 
@@ -294,7 +294,7 @@
 
   /*REC*/
   .header__decorated-element {
-    inset-inline-end: 20px; 
+    inset-inline-end: 20px;
     inset-block-start: 20px; /* Отступ сверху */
   }
 
